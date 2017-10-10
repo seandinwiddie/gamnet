@@ -1,0 +1,25 @@
+<ion-view title="Login">
+    <ion-content padding="'true'" style="background: url(img/hbkg.png) no-repeat center;" class="has-header">
+        <form class="list">
+            <br></br>
+            <br></br>
+            <img src="img/WpJiBkfQmy0S8QQjxN4R_33 (1).png" style="width: 100%; height: auto;" align="center">
+
+            <br></br>
+
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label" >Email</span>
+                    <input type="text" placeholder="" ng-model="user.email">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Wedding Code</span>
+                    <input type="password" placeholder="" ng-model="user.password">
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 40px;"></div>
+            <a class="button button-stable button-block " ng-click="logIn(user)">Log in</a>
+            <a href="#/register" class="button button-positive button-clear button-block ">Or register your Email with the Wedding Code</a>
+        </form>
+    </ion-content>
+</ion-view>

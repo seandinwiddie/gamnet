@@ -1,0 +1,21 @@
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<ion-view title="Gift Catalog">
+  <div id="profile-bg"  ></div>
+
+    <ion-content padding="'true'" style="background: url(img/S7niF5FkTv6skhpe84ty_screen_normal.png) no-repeat center;" class="has-header">
+    <p></p>
+<h1> <center><font color="white" size="10" font-family="Pacifico">{{currentUser.get('name')}}</font></center><h1>
+ <img id="profile-image" ng-src="{{profilePicture}}">
+ <p></p>
+    <div> </div>
+        <ion-list>
+
+  <ion-checkbox ng-model="filter.blue">Red</ion-checkbox>
+  <ion-checkbox ng-model="filter.yellow">Yellow</ion-checkbox>
+  <ion-checkbox ng-model="filter.pink">Pink</ion-checkbox>
+
+</ion-list>
+
+    </ion-content>
+</ion-view>

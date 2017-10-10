@@ -1,0 +1,40 @@
+
+
+<body ng-app="app">
+
+ <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<ion-view title="Gallery">
+
+
+  
+    <ion-pane>
+      
+       
+      
+      <ion-content class="has-header padding" ng-controller="galleryCtrl" style="background: url(img/hbkg.png) no-repeat center;">
+      <h1> <center><font color="white" size="10" font-family="Pacifico">{{currentUser.get('name')}}</font></center></h1>
+<img id="profile-image" ng-src="{{profilePicture}}"> <br></br>
+ 
+
+        <br></br>
+         <br></br>
+          <br></br>
+
+</div>
+            
+        <div class="item item-divider">
+          
+          <h2>Our photo album history<h2>
+        </div>
+        
+        <a class="item item-list-detail">
+          <ion-scroll direction="x">
+            <img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="showImages($index)" class="image-list-thumb"/>
+          </ion-scroll>
+        </a>
+      </ion-content>
+    </ion-pane>
+
+
+  </body>

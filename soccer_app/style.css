@@ -1,0 +1,91 @@
+body {
+  background-image: url("./Background.jpg");
+}
+
+
+.data-table{
+    align:center;
+    border-collapse:collapse;
+    width:100%;
+    text-align:center;
+    border: 1px solid #ffffff;
+    font-size:13px;
+}
+.data-table tr .teamcol{
+    width:100px;
+}
+.data-table thead tr td{
+    border-bottom:2px solid #2F85ff;
+    padding:5px 5px;
+    white-space:nowrap;
+    text-align:center;
+}
+.data-table thead tr th{
+    background-image: url("./row.png");
+    background-size: 100% 100%;
+    padding:5px;
+    font-size: 10px;
+}
+.data-table tbody .stage-title{
+    background-color: #225396;
+    text-align: left;
+}
+.data-table tbody .day-title{
+    background-color: #ffffff;
+    text-align: left;
+}
+.data-table tbody .stage-panel{
+    background-color: #225396;
+    text-align: center;
+}
+.data-table tbody .final-title{
+    background-color: #9D7216;
+    text-align: left;
+}
+.data-table tbody .final-panel{
+    background-color: #9D7216;
+    text-align: center;
+}
+.data-table tbody .winner-content{
+    background-color: #9D7216;
+    text-align: center;
+    border:1px solid #ffffff;
+    padding:5px;
+}
+.data-table tbody th{
+    text-align:center;
+    padding:4px;
+}
+.data-table tbody .stage-content{
+    background-image: url("./row.png");
+    background-size: 100% 100%;
+    padding:5px;
+}
+.points{
+    background-image: url("./blank.png");
+}
+
+span.title-text{
+    color: #ffffff;
+    font-size: 12px;
+}
+span.day-text{
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+}
+span.panel-text{
+    color: #ffffff;
+    font-size:11px;
+    padding:5px;
+}
+span.score-result{
+    font-size: 12px;
+    font-weight: bold;
+}
+span.winner-text{
+    color: #ffffff;
+    font-size:20px;
+    padding:5px;
+}

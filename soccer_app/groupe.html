@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset=utf-8 />
+  <title>Soccer</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <!-- <script src="angular.min.js"></script>
+  <script src="parse-1.2.12.min.js"></script>
+  <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css"> -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body ng-app = "myapp" ng-controller = "groupController">
+        <form novalidate>
+        <div>
+            <table class = "data-table">
+                <thead>
+                    <tr>
+                        <td class="stage-title" colspan="8"><span class="title-text">Group E</span></td>
+                    </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th>Time</th>
+                        <th class="teamcol">Team1</th>
+                        <th colspan="2">Result</th>
+                        <th class="teamcol">Team2</th>
+                        <th colspan="2">Grp</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in groupScores | orderBy:'no'">
+                    <tr>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.no}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.time | date:'EEEE, d MMM yyyy, HH:mm'}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="result-content"><input type="number" style="width:30px" class="input-result" ng-model="groupResult1[item.rid]"/></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="result-content"><input type="number" style="width:30px" class="input-result" ng-model="groupResult2[item.rid]"/></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team2}}</span></td>
+                        <td colspan="2" ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.grp}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+                <table class = "data-table">
+                    <thead>
+                        <tr>
+                            <th>Group E</th>
+                            <th>Pld</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in grp | orderBy:'-rnk'">
+                        <tr>
+                            <td><span>{{item.team}}</span></td>
+                            <td><span>{{item.Pld}}</span></td>
+                            <td><span>{{item.GF}}</span></td>
+                            <td><span>{{item.GA}}</span></td>
+                            <td><span>{{item.GD}}</span></td>
+                            <td><span>{{item.Pts}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <div>
+            <input class="sub-button" type="submit" ng-click="saveResults(groupResult1, groupResult2)">
+                </div>
+        </div>
+        <script>
+          groupName="Group E";
+        </script>
+        <script src="grp.js"></script>
+        </form>
+   </body>
+</html>

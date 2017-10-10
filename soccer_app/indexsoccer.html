@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
+  <script src="angular.min.js"></script>
+  <script src="parse-1.2.12.min.js"></script>
+  <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset=utf-8 />
+<title>Example</title>
+</head>
+<body ng-app="AuthApp">
+  <div ng-hide="currentUser">
+    <form ng-show="scenario == 'Sign up'">
+
+      <h2>Sign up</h2>
+ <img src="logosoccer.png" alt="">
+        <input placeholder="Email" type="email" ng-model="user.email" /><br />
+        <input placeholder="Username" type="text" ng-model="user.username" /><br />
+        <input placeholder="Password" type="password" ng-model="user.password" /><br />
+      <button ng-click="signUp(user)">Sign up</button>
+      or <a href="#" ng-click='scenario="Log in"'>Log in</a>
+    </form>
+
+    <form ng-show="scenario == 'Log in'" ng-style="{'background-image':'url("./Background.jpg")'}">
+      <h2>Log in</h2>
+ <img src="logosoccer.png" alt="">
+      <input placeholder="Username" type="text" ng-model="user.username" /><br />
+      <input placeholder="Password" type="password" ng-model="user.password" /><br />
+      <button ng-click="logIn(user)">Log in</button> or <a href="#" ng-click='scenario="Sign up"'>Sign up</a>
+    </form>
+  </div>
+
+  <div ng-show="currentUser">
+    <h1 style="color:white">Welcome {{currentUser.get('username')}}</h1>
+    <p style="color:white"> You have been successfully logged in</p>
+	<div id="logged-in-svg">
+	<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-376 79 612 612" enable-background="new -376 79 612 612" xml:space="preserve">
+	<g>
+		<g id="Cloud_x5F_Sun">
+			<g>
+				<path fill="#FFFFFF" d="M-10.3,213.3c12.4,0,22.4-10,22.4-22.4v-44.8c0-12.4-10-22.4-22.4-22.4c-12.4,0-22.4,10-22.4,22.4V191
+					C-32.7,203.3-22.7,213.3-10.3,213.3z M76.7,462.1c24.5-23.1,39.9-55.7,39.9-92.1c0-70.1-56.8-126.9-126.9-126.9
+					c-42.1,0-79.3,20.6-102.4,52.2c-14.8-4.7-30.5-7.4-46.9-7.4c-83.3,0-151.2,65-156.3,147.1c-35.8,18.7-60.2,56.1-60.2,99.2
+					c0,61.8,50.1,112,112,112H34.5c53.6,0,97-43.4,97-97C131.5,510.8,109.1,477.8,76.7,462.1z M-10.3,288c45.3,0,82.1,36.8,82.1,82.1
+					c0,14.9-4.2,28.9-11.2,40.9c-17.6-36.3-54.2-61.7-97-63.1c-9.9-12.5-21.7-23.3-34.8-32.3C-56.2,298.7-34.6,288-10.3,288z
+					 M34.5,601.4H-264c-37,0-67.2-30.1-67.2-67.2c0-25.1,13.9-47.9,36.2-59.5l22.4-11.7l1.5-25.2c3.6-58.9,52.6-105,111.6-105
+					c34.4,0,66.5,15.6,87.9,42.8l12.9,16.4l20.8,0.7c36.4,1.2,64.9,30.6,64.9,67v29.8L54.6,501c19.5,8.1,32.2,27.1,32.2,48.2
+					C86.7,578,63.3,601.4,34.5,601.4z M109.1,273c6.2,0,11.8-2.5,15.8-6.6l29.9-29.9c4.1-4.1,6.6-9.7,6.6-15.8
+					c0-12.4-10-22.4-22.4-22.4c-6.2,0-11.8,2.5-15.8,6.6l-29.9,29.9c-4.1,4-6.6,9.6-6.6,15.8C86.7,263,96.7,273,109.1,273z
+					 M-145.5,266.5c4.1,4,9.7,6.6,15.8,6.6c12.4,0,22.4-10,22.4-22.4c0-6.2-2.5-11.8-6.6-15.8l-29.9-29.9c-4-4-9.6-6.6-15.8-6.6
+					c-12.4,0-22.4,10-22.4,22.4c0,6.2,2.5,11.8,6.6,15.8L-145.5,266.5z M213.6,347.7h-44.8c-12.4,0-22.4,10-22.4,22.4
+					s10,22.4,22.4,22.4h44.8c12.4,0,22.4-10,22.4-22.4S226,347.7,213.6,347.7z"/>
+			</g>
+		</g>
+	</g>
+	</svg>
+	</div>
+
+  <form id="logged-in-form">
+          <div class="ui-field-contain">
+            <label for="time_zone">Set local timezone:</label>
+            <select name="select-native-1" id="time_zone" ng-model="timezone.value">
+              <option  gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
+              <option  gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
+              <option  gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
+              <option  gmtAdjustment="GMT-09:00" useDaylightTime="1" value="-9">(GMT-09:00) Alaska</option>
+              <option  gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
+              <option  gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Tijuana, Baja California</option>
+              <option  gmtAdjustment="GMT-07:00" useDaylightTime="0" value="-7">(GMT-07:00) Arizona</option>
+              <option  gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+              <option  gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
+              <option gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Central America</option>
+              <option gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Central Time (US & Canada)</option>
+              <option gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+              <option gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Saskatchewan</option>
+              <option gmtAdjustment="GMT-05:00" useDaylightTime="0" value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+              <option gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
+              <option gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Indiana (East)</option>
+              <option gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
+              <option gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Caracas, La Paz</option>
+              <option gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Manaus</option>
+              <option gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Santiago</option>
+              <option gmtAdjustment="GMT-03:30" useDaylightTime="1" value="-3.5">(GMT-03:30) Newfoundland</option>
+              <option gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Brasilia</option>
+              <option gmtAdjustment="GMT-03:00" useDaylightTime="0" value="-3">(GMT-03:00) Buenos Aires, Georgetown</option>
+              <option gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Greenland</option>
+              <option gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Montevideo</option>
+              <option gmtAdjustment="GMT-02:00" useDaylightTime="1" value="-2">(GMT-02:00) Mid-Atlantic</option>
+              <option gmtAdjustment="GMT-01:00" useDaylightTime="0" value="-1">(GMT-01:00) Cape Verde Is.</option>
+              <option gmtAdjustment="GMT-01:00" useDaylightTime="1" value="-1">(GMT-01:00) Azores</option>
+              <option gmtAdjustment="GMT+00:00" useDaylightTime="0" value="0">(GMT+00:00) Casablanca, Monrovia, Reykjavik</option>
+              <option gmtAdjustment="GMT+00:00" useDaylightTime="1" value="0">(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
+              <option gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+              <option gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+              <option gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+              <option gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+              <option gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) West Central Africa</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Amman</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Athens, Bucharest, Istanbul</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Beirut</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Cairo</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="0" value="2">(GMT+02:00) Harare, Pretoria</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Jerusalem</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Minsk</option>
+              <option gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Windhoek</option>
+              <option gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
+              <option gmtAdjustment="GMT+03:00" useDaylightTime="1" value="3">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+              <option gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Nairobi</option>
+              <option gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Tbilisi</option>
+              <option gmtAdjustment="GMT+03:30" useDaylightTime="1" value="3.5">(GMT+03:30) Tehran</option>
+              <option gmtAdjustment="GMT+04:00" useDaylightTime="0" value="4">(GMT+04:00) Abu Dhabi, Muscat</option>
+              <option gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Baku</option>
+              <option gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Yerevan</option>
+              <option gmtAdjustment="GMT+04:30" useDaylightTime="0" value="4.5">(GMT+04:30) Kabul</option>
+              <option gmtAdjustment="GMT+05:00" useDaylightTime="1" value="5">(GMT+05:00) Yekaterinburg</option>
+              <option gmtAdjustment="GMT+05:00" useDaylightTime="0" value="5">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
+              <option gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Sri Jayawardenapura</option>
+              <option gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+              <option gmtAdjustment="GMT+05:45" useDaylightTime="0" value="5.75">(GMT+05:45) Kathmandu</option>
+              <option gmtAdjustment="GMT+06:00" useDaylightTime="1" value="6">(GMT+06:00) Almaty, Novosibirsk</option>
+              <option gmtAdjustment="GMT+06:00" useDaylightTime="0" value="6">(GMT+06:00) Astana, Dhaka</option>
+              <option gmtAdjustment="GMT+06:30" useDaylightTime="0" value="6.5">(GMT+06:30) Yangon (Rangoon)</option>
+              <option gmtAdjustment="GMT+07:00" useDaylightTime="0" value="7">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+              <option gmtAdjustment="GMT+07:00" useDaylightTime="1" value="7">(GMT+07:00) Krasnoyarsk</option>
+              <option gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+              <option gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Kuala Lumpur, Singapore</option>
+              <option gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Irkutsk, Ulaan Bataar</option>
+              <option gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Perth</option>
+              <option gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Taipei</option>
+              <option gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+              <option gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Seoul</option>
+              <option gmtAdjustment="GMT+09:00" useDaylightTime="1" value="9">(GMT+09:00) Yakutsk</option>
+              <option gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Adelaide</option>
+              <option gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Darwin</option>
+              <option gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Brisbane</option>
+              <option gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Canberra, Melbourne, Sydney</option>
+              <option gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Hobart</option>
+              <option gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Guam, Port Moresby</option>
+              <option gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Vladivostok</option>
+              <option gmtAdjustment="GMT+11:00" useDaylightTime="1" value="11">(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+              <option gmtAdjustment="GMT+12:00" useDaylightTime="1" value="12">(GMT+12:00) Auckland, Wellington</option>
+              <option gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
+              <option gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku'alofa</option>
+
+            </select>
+          </div>
+	<button ng-click="saveTimezone()">Save</button>
+    <button ng-click="logOut(user)">Log out</button>
+  </div>
+</body>
+  <script type="text/javascript">
+Parse.initialize("ZsCFMZzIfwikLAbIWWIwDsyPynNTlzxlTDC0GPrk", "WahTfAJFRE7ZCY1JcfLPDCNRHZWJl9g01sa6w4rf");
+
+angular.module('AuthApp', [])
+.run(['$rootScope', function($scope) {
+  $scope.scenario = 'Sign up';
+  $scope.timezone = {value:0};
+  $scope.currentUser = Parse.User.current();
+
+  $scope.signUp = function(form) {
+    var user = new Parse.User();
+    user.set("email", form.email);
+    user.set("username", form.username);
+    user.set("password", form.password);
+
+    user.signUp(null, {
+      success: function(user) {
+        $scope.currentUser = user;
+        for(i=0;i<51;i++){resultSetup(i);}
+        $scope.$apply();
+      },
+      error: function(user, error) {
+        alert("Unable to sign up:  " + error.code + " " + error.message);
+      }
+    });
+  };
+  var gameId=[
+    "SYqKf9s5C6",//1
+    "Qa3Hp3W0eR",//2
+    "cQlJVH4fXk",//3
+    "HUtb81rqk9",//4
+    "Mon1WxUuMA",//5
+    "ilFXnTBlAk",//6
+    "KH57JiJdv2",//7
+    "Ac80yeEK2Y",//8
+    "uVmg2baNp9",//9
+    "D2dgoOR9ue",//10
+    "Fy6JEJVP7r",//11
+    "MkRPKmsITj",//12
+    "j3qCeLIcOu",//13
+    "dYMA02pQX1",//14
+    "uYUqbWx98H",//15
+    "WyEP6Dd8Vu",//16
+    "3TpcSz5dop",//17
+    "OQRaqP76V8",//18
+    "HKCOb9Mmqm",//19
+    "ovQn6scs1p",//20
+    "4TcT8fE9Si",//21
+    "UBLeN7G9Gf",//22
+    "Pb4bU49Rl9",//23
+    "2HtEuk24mL",//24
+    "jLiCebC6wM",//25
+    "ndwp3OGJ5Y",//26
+    "6TsoS1REyG",//27
+    "nRcKfbVsVJ",//28
+    "JDeTR2TJ3v",//29
+    "qZsqgB1vuB",//30
+    "66Eo9asu8e",//31
+    "7VfEaUZI8F",//32
+    "Qx0TL8jrc1",//33
+    "M7HhPDJV4y",//34
+    "Ydf0X41hVN",//35
+    "KScGmK53bc",//36
+    "fOC3y8lhzd",//37
+    "SB19DUzHhQ",//38
+    "5l1yYoG5dg",//39
+    "sMJPe8wZrO",//40
+    "99IQO8TvCa",//41
+    "yB77d6MCWJ",//42
+    "s2SoM1GfW0",//43
+    "cS6MYOnYdv",//44
+    "DIrypn3wxe",//45
+    "zQZ2UKj7BS",//46
+    "mmrP3Wk4LS",//47
+    "KHLbKHtdAg",//48
+    "6hHJGT8SNs",//49
+    "dg1sYORYcm",//50
+    "31sBlf3grh"//51
+  ];
+  function resultSetup(i){
+    var ResultsClass=Parse.Object.extend("Results");
+    var results=new ResultsClass();
+    results.set("user",{__type: "Pointer", className: "User", objectId: $scope.currentUser.id});
+    results.set("game",{__type: "Pointer", className: "Game", objectId: gameId[i]});
+    results.save(null,{
+      success:function(results){$scope.$apply();},
+      error:function(error){alert(error.code + " " + error.message);}
+    });
+  }
+
+  $scope.logIn = function(form) {
+    Parse.User.logIn(form.username, form.password, {
+      success: function(user) {
+        $scope.currentUser = user;
+        $scope.$apply();
+      },
+      error: function(user, error) {
+        alert("Unable to log in: " + error.code + " " + error.message);
+      }
+    });
+  };
+
+  $scope.saveTimezone = function(){
+	  if($scope.currentUser){
+		  $scope.currentUser.set("timezone", $scope.timezone.value);
+		  $scope.currentUser.save(null, {
+			  success : function(user){
+				  alert('Your timezone has successfully been saved.');
+			  },
+			  error : function(user, error){
+				  alert('Your timezone could not be saved');
+				  console.log(JSON.stringify(error));
+			  }
+		  });
+	  } else {
+		  console.log('User is not logged in');
+	  }
+  };
+
+  $scope.logOut = function(form) {
+    Parse.User.logOut();
+    $scope.currentUser = null;
+  };
+}]);
+</script>
+</html>

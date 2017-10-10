@@ -1,0 +1,491 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset=utf-8 />
+    <title>Soccer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body ng-app = "myapp" ng-controller = "groupController">    
+        <div>
+            <table class = "data-table" >
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Time</th>
+                        <th class="teamcol">Team1</th>
+                        <th colspan="2">Result</th>
+                        <th class="teamcol">Team2</th>
+                        <th colspan="2">Grp</th>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td class="stage-title" colspan="8"><span class="title-text">Group Stage</span></td>
+                    </tr>
+                <tbody ng-repeat="item in groupScores | orderBy:'no'">
+                    <tr>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.no}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.time | date:'EEEE, d MMM yyyy, HH:mm'}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="result-content"><span class="score-result">{{item.result1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="result-content"><span class="score-result">{{item.result2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team2}}</span></td>
+                        <td colspan="2" ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.grp}}</span></td>
+                    </tr>
+                </tbody>
+                    <tr>
+                        <td class="stage-title" colspan="6"><span class="title-text">Round of 16</span></td>
+                        <td class="stage-panel" colspan="2"><span class="panel-text">Penalties</span></td>
+                    </tr>
+                <tbody ng-repeat="item in round16Scores | orderBy:'no'">
+                    <tr>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.no}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.time | date:'EEEE, d MMM yyyy, HH:mm'}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p2}}</span></td>
+                    </tr>
+                </tbody>
+                    <tr>
+                        <td class="stage-title" colspan="6"><span class="title-text">Quarter Finals</span></td>
+                        <td class="stage-panel" colspan="2"><span class="panel-text">Penalties</span></td>
+                    </tr>
+                <tbody ng-repeat="item in quarterScores | orderBy:'no'">
+                    <tr>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.no}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.time | date:'EEEE, d MMM yyyy, HH:mm'}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p2}}</span></td>
+                    </tr>
+                </tbody>
+                    <tr>
+                        <td class="stage-title" colspan="6"><span class="title-text">Semi Finals</span></td>
+                        <td class="stage-panel" colspan="2"><span class="panel-text">Penalties</span></td>
+                    </tr>
+                <tbody ng-repeat="item in semiScores | orderBy:'no'">
+                    <tr>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.no}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.time | date:'EEEE, d MMM yyyy, HH:mm'}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p2}}</span></td>
+                    </tr>
+                </tbody>
+                    <tr>
+                        <td class="final-title" colspan="6"><span class="title-text">Finals</span></td>
+                        <td class="final-panel" colspan="2"><span class="panel-text">Penalties</span></td>
+                    </tr>
+                <tbody ng-repeat="item in finalScores | orderBy:'no'">
+                    <tr ng-repeat="item in finalScores">
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.no}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.time | date:'EEEE, d MMM yyyy, HH:mm'}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.result2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span class="score-result">{{item.team2}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p1}}</span></td>
+                        <td ng-if="(day.getDate()==item.time.getDate())&&(day.getMonth()==item.time.getMonth())&&(day.getFullYear()==item.time.getFullYear())" class="stage-content"><span>{{item.p2}}</span></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td class="winner-content" colspan="8">
+                            <span class="winner-text">Winner is :</span>
+                            <img ng-src={{logoUrl}}>
+                            <span class="winner-text">{{winner}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <script>
+            var soccerapp = angular.module("myapp", [])
+            var app_id = "ZsCFMZzIfwikLAbIWWIwDsyPynNTlzxlTDC0GPrk";
+            var js_key = "WahTfAJFRE7ZCY1JcfLPDCNRHZWJl9g01sa6w4rf";
+            var no;
+            Parse.initialize(app_id, js_key);
+            soccerapp.controller("groupController", function($scope) {
+                        var userid = Parse.User.current().id;
+                        var User = Parse.Object.extend("User");
+                        var result = Parse.Object.extend("Results");
+                        var queryResult = new Parse.Query(result);
+                        var GameScore = Parse.Object.extend("Game");
+                        var queryGame = new Parse.Query(GameScore);
+                        var queryStage = new Parse.Query("Stage");
+                        queryResult.include("user");
+                        queryResult.include("game");
+                        queryResult.include("game.stage");
+                        queryResult.include("game.participant1");
+                        queryResult.include("game.participant2");
+                        queryResult.include("game.participant1.team");
+                        queryResult.include("game.participant2.team");
+                        queryStage.contains("name", "Group");
+                        queryGame.ascending("date");
+                        queryGame.matchesQuery("stage", queryStage);
+                        queryResult.matchesQuery("game", queryGame);
+                        queryResult.equalTo("user", new User({id: userid}));
+                        queryResult.find({
+                            success: function(results) {
+                                $scope.$apply(function() {
+                                    var arr = [];
+                                    var dayArr = [];
+                                    var countDays = 0;
+                                    if (results.length > 0){
+                                        dayArr.push(results[0].get("game").get("date"));
+                                    }
+                                    no = 1;
+                                    for (i = 0; i < results.length; i++)
+                                    {
+                                        var team1, team2;
+                                        var date = results[i].get("game").get("date");
+                                        for (j = 0; j <= countDays; j++){
+                                            if ( dayArr[j].getDate()!=date.getDate() || dayArr[j].getMonth() != date.getMonth() || dayArr[j].getFullYear() != date.getFullYear()){
+                                                dayArr.push(results[i].get("game").get("date"));
+                                                countDays ++;
+                                                break;
+                                            }
+                                        }
+                                        if (results[i].get("game").get("participant1").get("team")){
+                                            team1 = results[i].get("game").get("participant1").get("team").get("name");
+                                        }else{
+                                            team1 = results[i].get("game").get("participant1").get("name");
+                                        }
+                                        
+                                        if (results[i].get("game").get("participant2").get("team")){
+                                            team2 = results[i].get("game").get("participant2").get("team").get("name");
+                                        }else{
+                                            team2 = results[i].get("game").get("participant2").get("name");
+                                        }
+                                        arr.push({"no":results[i].get("game").get("number"), 
+                                                "time":results[i].get("game").get("date"), 
+                                                "team1":team1, 
+                                                "team2":team2, 
+                                                "result1": results[i].get("team1"), 
+                                                "result2": results[i].get("team2"), 
+                                                "grp":results[i].get("game").get("stage").get("name").slice(-1),
+                                                "pid":results[i].id});
+                                        no++;
+                                    }
+                                    $scope.groupScores = arr;
+                                    $scope.days = dayArr;
+                                });
+                            },
+                            error: function(error) {
+                                $scope.gameScores = "fail!";
+                                console.log(error);
+                            }
+                        });
+                        
+                        var result = Parse.Object.extend("Results");
+                        var queryResult = new Parse.Query(result);
+                        var GameScore = Parse.Object.extend("Game");
+                        var queryGame = new Parse.Query(GameScore);
+                        var queryStage = new Parse.Query("Stage");
+                        queryResult.include("user");
+                        queryResult.include("game");
+                        queryResult.include("game.stage");
+                        queryResult.include("game.participant1");
+                        queryResult.include("game.participant2");
+                        queryResult.include("game.participant1.team");
+                        queryResult.include("game.participant2.team");
+                        queryStage.equalTo("name", "Round of 16");
+                        queryGame.ascending("date");
+                        queryGame.matchesQuery("stage", queryStage);
+                        queryResult.matchesQuery("game", queryGame);
+                        queryResult.equalTo("user", new User({id: userid}));
+                        queryResult.find({
+                            success: function(results) {
+                                $scope.$apply(function() {
+                                    var arr = [];
+                                    var dayArr = [];
+                                    var countDays = 0;
+                                    if (results.length > 0){
+                                        dayArr.push(results[0].get("game").get("date"));
+                                    }
+                                    for (i = 0; i < results.length; i++)
+                                    {
+                                        var team1, team2;
+                                        if (results.length > 0){
+                                            var date = results[i].get("game").get("date");
+                                        }
+                                        for (j = 0; j <= countDays; j++){
+                                            if ( dayArr[j].getDate()!=date.getDate() || dayArr[j].getMonth() != date.getMonth() || dayArr[j].getFullYear() != date.getFullYear()){
+                                                dayArr.push(results[i].get("game").get("date"));
+                                                countDays ++;
+                                                break;
+                                            }
+                                        }
+                                        if (results[i].get("game").get("participant1").get("team")){
+                                            team1 = results[i].get("game").get("participant1").get("team").get("name");
+                                        }else{
+                                            team1 = results[i].get("game").get("participant1").get("name");
+                                        }
+                                        if (results[i].get("game").get("participant2").get("team")){
+                                            team2 = results[i].get("game").get("participant2").get("team").get("name");
+                                        }else{
+                                            team2 = results[i].get("game").get("participant2").get("name");
+                                        }
+                                        arr.push({"no":results[i].get("game").get("number"), 
+                                                "time":results[i].get("game").get("date"), 
+                                                "team1":team1, 
+                                                "team2":team2, 
+                                                "result1":results[i].get("team1"), 
+                                                "result2":results[i].get("team2"), 
+                                                "p1":results[i].get("penal1"),
+                                                "p2":results[i].get("penal2")});
+                                        no++;
+                                    }
+                                    $scope.round16Scores = arr;
+                                    $scope.daysRound16 = dayArr;
+                                });
+                            },
+                            error: function(error) {
+                                $scope.gameScores = "fail!";
+                                console.log(error);
+                            }
+                        });
+                        var result = Parse.Object.extend("Results");
+                        var queryResult = new Parse.Query(result);
+                        var GameScore = Parse.Object.extend("Game");
+                        var queryGame = new Parse.Query(GameScore);
+                        var queryStage = new Parse.Query("Stage");
+                        queryResult.include("user");
+                        queryResult.include("game");
+                        queryResult.include("game.stage");
+                        queryResult.include("game.participant1");
+                        queryResult.include("game.participant2");
+                        queryResult.include("game.participant1.team");
+                        queryResult.include("game.participant2.team");
+                        queryStage.equalTo("name", "Quarter Finals");
+                        queryGame.ascending("date");
+                        queryGame.matchesQuery("stage", queryStage);
+                        queryResult.matchesQuery("game", queryGame);
+                        queryResult.equalTo("user", new User({id: userid}));
+                        queryResult.find({
+                            success: function(results) {
+                                $scope.$apply(function() {
+                                    var arr = [];
+                                    var dayArr = [];
+                                    var countDays = 0;
+                                    if (results.length > 0){
+                                        dayArr.push(results[0].get("game").get("date"));
+                                    }
+                                    for (i = 0; i < results.length; i++)
+                                    {
+                                        var team1, team2;
+                                        if (results.length > 0){
+                                            var date = results[i].get("game").get("date");
+                                        }
+                                        for (j = 0; j <= countDays; j++){
+                                            if ( dayArr[j].getDate()!=date.getDate() || dayArr[j].getMonth() != date.getMonth() || dayArr[j].getFullYear() != date.getFullYear()){
+                                                dayArr.push(results[i].get("game").get("date"));
+                                                countDays ++;
+                                                break;
+                                            }
+                                        }
+                                        
+                                        if (results[i].get("game").get("participant1").get("team")){
+                                            team1 = results[i].get("game").get("participant1").get("team").get("name");
+                                        }else{
+                                            team1 = results[i].get("game").get("participant1").get("name");
+                                        }
+                                        
+                                        if (results[i].get("game").get("participant2").get("team")){
+                                            team2 = results[i].get("game").get("participant2").get("team").get("name");
+                                        }else{
+                                            team2 = results[i].get("game").get("participant2").get("name");
+                                        }
+                                        arr.push({"no":results[i].get("game").get("number"), 
+                                                "time":results[i].get("game").get("date"), 
+                                                "team1":team1, 
+                                                "team2":team2, 
+                                                "result1":results[i].get("team1"), 
+                                                "result2":results[i].get("team2"), 
+                                                "p1":results[i].get("penal1"),
+                                                "p2":results[i].get("penal2")});
+                                        no++;
+                                    }
+                                    $scope.quarterScores = arr;
+                                    $scope.daysQuarter = dayArr;
+                                });
+                            },
+                            error: function(error) {
+                                $scope.gameScores = "fail!";
+                                console.log(error);
+                            }
+                        });
+                        
+                        var result = Parse.Object.extend("Results");
+                        var queryResult = new Parse.Query(result);
+                        var GameScore = Parse.Object.extend("Game");
+                        var queryGame = new Parse.Query(GameScore);
+                        var queryStage = new Parse.Query("Stage");
+                        queryResult.include("user");
+                        queryResult.include("game");
+                        queryResult.include("game.stage");
+                        queryResult.include("game.participant1");
+                        queryResult.include("game.participant2");
+                        queryResult.include("game.participant1.team");
+                        queryResult.include("game.participant2.team");
+                        queryStage.equalTo("name", "Semi Finals");
+                        queryGame.ascending("date");
+                        queryGame.matchesQuery("stage", queryStage);
+                        queryResult.matchesQuery("game", queryGame);
+                        queryResult.equalTo("user", new User({id: userid}));
+                        queryResult.find({
+                            success: function(results) {
+                                $scope.$apply(function() {
+                                    var arr = [];
+                                    var dayArr = [];
+                                    var countDays = 0;
+                                    if (results.length > 0){
+                                        dayArr.push(results[0].get("game").get("date"));
+                                    }
+                                    for (i = 0; i < results.length; i++)
+                                    {
+                                        var team1, team2;
+                                        
+                                        var date = results[i].get("game").get("date");
+                                        for (j = 0; j <= countDays; j++){
+                                            if ( dayArr[j].getDate()!=date.getDate() || dayArr[j].getMonth() != date.getMonth() || dayArr[j].getFullYear() != date.getFullYear()){
+                                                dayArr.push(results[i].get("game").get("date"));
+                                                countDays ++;
+                                                break;
+                                            }
+                                        }
+                                        if (results[i].get("game").get("participant1").get("team")){
+                                            team1 = results[i].get("game").get("participant1").get("team").get("name");
+                                        }else{
+                                            team1 = results[i].get("game").get("participant1").get("name");
+                                        }
+                                        
+                                        if (results[i].get("game").get("participant2").get("team")){
+                                            team2 = results[i].get("game").get("participant2").get("team").get("name");
+                                        }else{
+                                            team2 = results[i].get("game").get("participant2").get("name");
+                                        }
+                                        arr.push({"no":results[i].get("game").get("number"), 
+                                                "time":results[i].get("game").get("date"), 
+                                                "team1":team1, 
+                                                "team2":team2, 
+                                                "result1":results[i].get("team1"), 
+                                                "result2":results[i].get("team2"), 
+                                                "p1":results[i].get("penal1"),
+                                                "p2":results[i].get("penal2")});
+                                        no++;
+                                    }
+                                    $scope.semiScores = arr;
+                                    $scope.daysSemi = dayArr;
+                                });
+                            },
+                            error: function(error) {
+                                $scope.gameScores = "fail!";
+                                console.log(error);
+                            }
+                        });
+                        
+                        var result = Parse.Object.extend("Results");
+                        var queryResult = new Parse.Query(result);
+                        var GameScore = Parse.Object.extend("Game");
+                        var queryGame = new Parse.Query(GameScore);
+                        var queryStage = new Parse.Query("Stage");
+                        queryResult.include("user");
+                        queryResult.include("game");
+                        queryResult.include("game.stage");
+                        queryResult.include("game.participant1");
+                        queryResult.include("game.participant2");
+                        queryResult.include("game.participant1.team");
+                        queryResult.include("game.participant2.team");
+                        queryStage.equalTo("name", "Finals");
+                        queryGame.ascending("date");
+                        queryGame.matchesQuery("stage", queryStage);
+                        queryResult.matchesQuery("game", queryGame);
+                        queryResult.equalTo("user", new User({id: userid}));
+                        queryResult.find({
+                            success: function(results) {
+                                $scope.$apply(function() {
+                                    var arr = [];
+                                    var dayArr = [];
+                                    var countDays = 0;
+                                    if (results.length > 0){
+                                        dayArr.push(results[0].get("game").get("date"));
+                                    }
+                                    for (i = 0; i < results.length; i++)
+                                    {
+                                        var team1, team2;
+                                        var logo1, logo2;
+                                        
+                                        var date = results[i].get("game").get("date");
+                                        for (j = 0; j <= countDays; j++){
+                                            if ( dayArr[j].getDate()!=date.getDate() || dayArr[j].getMonth() != date.getMonth() || dayArr[j].getFullYear() != date.getFullYear()){
+                                                dayArr.push(results[i].get("game").get("date"));
+                                                countDays ++;
+                                                break;
+                                            }
+                                        }
+                                        if (results[i].get("game").get("participant1").get("team")){
+                                            team1 = results[i].get("game").get("participant1").get("team").get("name");
+                                            logo1 = results[i].get("game").get("participant1").get("team").get("Logo");
+                                        }else{
+                                            team1 = results[i].get("game").get("participant1").get("name");
+                                        }
+                                        
+                                        if (results[i].get("game").get("participant2").get("team")){
+                                            team2 = results[i].get("game").get("participant2").get("team").get("name");
+                                            logo2 = results[i].get("game").get("participant2").get("team").get("Logo");
+                                        }else{
+                                            team2 = results[i].get("game").get("participant2").get("name");
+                                        }
+                                        arr.push({"no":results[i].get("game").get("number"), 
+                                                "time":results[i].get("game").get("date"), 
+                                                "team1":team1, 
+                                                "team2":team2, 
+                                                "result1":results[i].get("team1"), 
+                                                "result2":results[i].get("team2"), 
+                                                "p1":results[i].get("penal1"),
+                                                "p2":results[i].get("penal2")});
+                                        
+                                        if (results[i].get("team1") > results[i].get("team2")){
+                                            $scope.winner = team1;
+                                            $scope.logoUrl = logo1.url();
+                                        }else if(results[i].get("team1") == results[i].get("team2")){
+                                            if (results[i].get("penal1") > results[i].get("penal2")){
+                                                $scope.winner = team1;
+                                                $scope.logoUrl = logo1.url();
+                                            }else{
+                                                $scope.winner = team2;
+                                                $scope.logoUrl = logo2.url();
+                                            }
+                                        }else{
+                                            $scope.winner = team2;
+                                            $scope.logoUrl = logo2.url();
+                                        }
+                                        no++;
+                                    }
+                                    $scope.finalScores = arr;
+                                    $scope.daysFinal = dayArr;
+                                });
+                            },
+                            error: function(error) {
+                                $scope.gameScores = "fail!";
+                                console.log(error);
+                            }
+                        });
+                    });
+        </script>
+   </body>
+</html>

@@ -1,0 +1,219 @@
+
+
+<body ng-app="app">
+
+ <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<ion-view title="Calendar & Venues">
+
+
+
+    <ion-pane>
+
+
+
+      <ion-content class="has-header padding" ng-controller="galleryCtrl" style="background: url(img/hbkg.png) no-repeat center;">
+      <h1> <center><font color="white" size="10" font-family="Pacifico">{{currentUser.get('name')}}</font></center></h1>
+<img id="profile-image" ng-src="{{profilePicture}}">
+<br></br>
+
+
+        <br></br>
+         <br></br>
+          <br></br>
+
+
+
+<section class='calendar'>
+  <h1>August 2015</h1>
+  <form action='#'>
+    <label class='weekday'>Mo</label>
+    <label class='weekday'>Tu</label>
+    <label class='weekday'>We</label>
+    <label class='weekday'>Th</label>
+    <label class='weekday'>Fr</label>
+    <label class='weekday'>Sa</label>
+    <label class='weekday'>Su</label>
+    <label class='day invalid' data-day='0'>
+
+      <span>-4</span>
+      <em></em>
+    </label>
+    <label class='day invalid' data-day='1'>
+
+      <span>-3</span>
+      <em></em>
+    </label>
+    <label class='day invalid' data-day='2'>
+      <span>-2</span>
+      <em></em>
+    </label>
+    <label class='day invalid' data-day='3'>
+      <span>-1</span>
+      <em></em>
+    </label>
+    <label class='day invalid' data-day='4'>
+      <span>0</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='5'>
+      <span>1</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='6'>
+      <span>2</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='7'>
+      <span>3</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='8'>
+      <span>4</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='9'>
+      <span>5</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='10'>
+      <span>6</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='11'>
+      <span>7</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='12'>
+      <span>8</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='13'>
+      <span>9</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='14'>
+      <span>10</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='15'>
+      <span>11</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='16'>
+      <span>12</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='17'>
+      <span>13</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='18'>
+      <span>14</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='19'>
+      <span>15</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='20'>
+      <span>16</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='21'>
+      <span>17</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='22'>
+      <span>18</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='23'>
+      <span>19</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='24'>
+      <span>20</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='25'>
+      <span>21</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='26'>
+      <span>22</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='27'>
+      <span>23</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='28'>
+      <span>24</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='29'>
+      <span>25</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='30'>
+      <span>26</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='31'>
+      <span>27</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='32'>
+      <span>28</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='33'>
+      <span>29</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='34'>
+      <span>30</span>
+      <em></em>
+    </label>
+    <label class='day' data-day='35'>
+      <span>31</span>
+      <em></em>
+    </label>
+    <div class='clearfix'></div>
+  </form>
+</section>
+
+
+        <br></br>
+         <br></br>
+          <br></br>
+           <br></br>
+            <br></br>
+             <br></br>
+              <br></br>
+               <br></br>
+                <br></br>
+           <div class="list card">
+
+  <div class="item item-avatar">
+    <img src="img/jov.jpg">
+    <h2>Eevent place/h2>
+    <p>Rome, Italy</p>
+  </div>
+
+  <div class="item item-image">
+    <img src="img/rome.png">
+  </div>
+
+  <a class="item item-icon-left assertive" href="tel:654654654645">
+     <i class="icon ion-ios-telephone"></i></i>
+    Please confirm your attendence here
+  </a>
+
+
+      </ion-content>
+    </ion-pane>
+
+
+  </body>

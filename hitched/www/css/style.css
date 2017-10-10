@@ -1,0 +1,21 @@
+#profile-image{
+  display: block;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  width: 128px;
+  height: 128px;
+  margin: 30px auto 0;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+}
+.item-input,
+.item-input textarea{
+  border-top:0;
+  border-right:0;
+  border-left:0;
+  background:transparent;
+}
+.input-label,
+.item-input input,
+.item-input textarea{
+  color:white;
+}

@@ -1,0 +1,45 @@
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<ion-view title="Memories">
+ <div id="profile-bg"  ></div>
+
+    <ion-content padding="'true'" style="background: url(img/S7niF5FkTv6skhpe84ty_screen_normal.png) no-repeat center;" class="has-header">
+
+      <p></p>
+      <h1>
+        <center>
+          <font color="white" size="10" font-family="Pacifico">{{currentUser.get('name')}}</font>
+        </center>
+      </h1>
+      <img id="profile-image" ng-src="{{profilePicture}}">
+      <button class="button ion-ios-camera-outline" ng-click="memoryPic()">
+        <p></p>
+        <div> </div>
+        <div> </div>
+      </button>
+
+      <center><font color="white" size="3"  >Send greeting to the couple</font></center>
+      <p></p>
+
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="First Name">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Last Name">
+        </label>
+        <p></p>
+         <label class="item item-input">
+          <input type="tel" placeholder="Phone">
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Comments"></textarea>
+        </label>
+      </div>
+
+      <button class="button button-block button-royal">
+        Send
+      </button>
+
+    </ion-content>
+</ion-view>

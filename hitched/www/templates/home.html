@@ -1,0 +1,53 @@
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<ion-view title="Home">
+  <div id="profile-bg"  ></div>
+
+    <ion-content padding="'true'" style="background: url(img/S7niF5FkTv6skhpe84ty_screen_normal.png) no-repeat center;" class="has-header">
+      <p></p>
+      <h1><center><font color="white" size="10" font-family="Pacifico">{{currentUser.get('name')}}</font></center><h1>
+      <img id="profile-image" ng-src="{{profilePicture}}">
+      <p></p>
+      <div> </div>
+      <div> </div>
+      <div class="row">
+        <div class="col">
+          <a style="display: inline-block; width: 100%; height: auto;" href="#/ourstory">
+            <img src="img/1.png" width="100%" height="auto">
+          </a>
+        </div>
+        <div class="col">
+          <a style="display: inline-block; width: 100%; height: auto;" href="#/memories">
+            <img src="img/2.png" width="100%" height="auto">
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <a style="display: inline-block; width: 100%; height: auto;" href="#/calendar">
+            <img src="img/calendar.png" width="100%" height="auto">
+          </a>
+        </div>
+        <div class="col">
+          <a style="display: inline-block; width: 100%; height: auto;" href="#/offers">
+            <img src="img/5.png" width="100%" height="auto">
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <a style="display: inline-block; width: 100%; height: auto;" href="#/giftcatalog">
+            <img src="img/3.png" width="100%" height="auto">
+          </a>
+        </div>
+        <div class="col">
+          <a style="display: inline-block; width: 100%; height: auto;" href="#/ourstory">
+            <img src="img/polls.png" width="100%" height="auto">
+          </a>
+        </div>
+
+      </div>
+
+    </ion-content>
+</ion-view>
